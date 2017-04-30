@@ -3,16 +3,22 @@ package Task1_2;
 public class ArrayHolder {
     private static int[] mas;
 
-    public ArrayHolder(int arraySize) {
-        this.mas = new int[arraySize];
+    ArrayHolder(int arraySize) {
+        mas = new int[arraySize];
     }
 
 
-    public int[] getMas() {
+    int[] getMas() {
         return mas;
     }
 
-    public void sortArrayInAscending() {
+    void fillArray(int[] mas) {
+        for (int i = 0; i < mas.length; i++) {
+            mas[i] = (int) ((Math.random() * 10 + 1));
+        }
+    }
+
+    void sortArrayInAscending() {
         for (int i = 1; i < mas.length; i++) {
             for (int j = 1; j < mas.length; j++) {
                 if (mas[j] < mas[j - 1]) {
@@ -24,7 +30,7 @@ public class ArrayHolder {
         }
     }
 
-    public void sortArrayInDescending() {
+    void sortArrayInDescending() {
         for (int i = 1; i < mas.length; i++) {
             for (int j = 1; j < mas.length; j++) {
                 if (mas[j] > mas[j - 1]) {
@@ -36,20 +42,23 @@ public class ArrayHolder {
         }
     }
 
-    public String findElement(int element) {
+    String findElement(int element) {
         String string = "";
+        boolean isInArray = false;
+
         for (int i = 0; i < mas.length; i++) {
             if (mas[i] == element) {
-                string += i + ", ";
+                if (isInArray)
+                    string += ", ";
+                string += i;
+                isInArray = true;
+
             }
         }
+        if (string.equals("")) return ("NOWHERE\n");
         return string;
     }
 
-    public void fillArray(int[] mas) {
-        for (int i = 0; i < mas.length; i++) {
-            mas[i] = (int) (Math.random() * 10 + 1);
-        }
-    }
+
 }
 
