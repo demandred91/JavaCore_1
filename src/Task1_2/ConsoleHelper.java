@@ -10,13 +10,13 @@ public class ConsoleHelper {
 
     public void start() {
         int option;
-        hello();
+        getHelloMessage();
         size = in.nextInt();
         ArrayHolder arrayHolder = new ArrayHolder(size);
         arrayHolder.fillArray(arrayHolder.getMas());
-        System.out.println("Your array is: " + Arrays.toString(arrayHolder.getMas()));
+        System.out.println("Your initial array is: " + Arrays.toString(arrayHolder.getMas()));
         do {
-            menu();
+            getMenu();
             option = in.nextInt();
             switch (option) {
                 case 1: {
@@ -36,30 +36,30 @@ public class ConsoleHelper {
                     break;
                 }
                 case 4: {
-                    bye();
+                    getByeMessage();
                     break;
                 }
                 default: {
-                    error();
+                    getErrorMessage();
                     break;
                 }
             }
         } while (option != 4);
     }
 
-    private void hello() {
+    private void getHelloMessage() {
         System.out.println("Welcome to my program! I hope you will enjoy it!\nPlease enter the size of the array, program will fill it automatically: ");
     }
 
-    private void bye() {
+    private void getByeMessage() {
         System.out.println("Thanks for using my program!");
     }
 
-    private void error() {
+    private void getErrorMessage() {
         System.out.println("You entered wrong value! Please try again!");
     }
 
-    private void menu() {
+    private void getMenu() {
         System.out.println("What do you want to do?\n1) to find an element;\n2) to sort the array in ascending order;\n3) to sort the array in descending order:\n4) to quit the program");
 
 
