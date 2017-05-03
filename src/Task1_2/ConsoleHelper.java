@@ -1,7 +1,6 @@
 package Task1_2;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleHelper {
@@ -70,7 +69,7 @@ public class ConsoleHelper {
         return "Enter an element you want to find: ";
     }
 
-    public static int getIntFromScanner(Scanner sc, String errorMessage)
+    private static int getIntFromScanner(Scanner sc, String errorMessage)
     {
         while (!sc.hasNextInt())
         {
