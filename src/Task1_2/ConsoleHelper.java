@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleHelper {
-    private static int size;
+    private int size;
     private Scanner in = new Scanner(System.in);
 
 

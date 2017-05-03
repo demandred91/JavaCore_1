@@ -1,7 +1,7 @@
 package Task1_2;
 
 public class ArrayHolder {
-    private static int[] mas;
+    private int[] mas;
 
     ArrayHolder(int arraySize) {
         mas = new int[arraySize];
