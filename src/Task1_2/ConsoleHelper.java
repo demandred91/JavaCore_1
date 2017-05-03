@@ -1,6 +1,7 @@
 package Task1_2;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleHelper {
@@ -9,42 +10,42 @@ public class ConsoleHelper {
 
 
     public void start() {
-        int option;
+        String option;
         getHelloMessage();
-        size = in.nextInt();
+        size = getIntFromScanner(in, getErrorMessage());
         ArrayHolder arrayHolder = new ArrayHolder(size);
         arrayHolder.fillArray(arrayHolder.getMas());
         System.out.println("Your initial array is: " + Arrays.toString(arrayHolder.getMas()));
         do {
             getMenu();
-            option = in.nextInt();
+            option = in.next();
             switch (option) {
-                case 1: {
+                case "1": {
                     System.out.print(writeMessageForElement());
                     int element = in.nextInt();
                     System.out.println("The element " + element + " is found in " + arrayHolder.findElement(element));
                     break;
                 }
-                case 2: {
+                case "2": {
                     arrayHolder.sortArrayInAscending();
                     System.out.println(Arrays.toString(arrayHolder.getMas()));
                     break;
                 }
-                case 3: {
+                case "3": {
                     arrayHolder.sortArrayInDescending();
                     System.out.println(Arrays.toString(arrayHolder.getMas()));
                     break;
                 }
-                case 4: {
+                case "4": {
                     getByeMessage();
                     break;
                 }
                 default: {
-                    getErrorMessage();
+                    System.err.println(getErrorMessage());
                     break;
                 }
             }
-        } while (option != 4);
+        } while (!option.equals("4"));
     }
 
     private void getHelloMessage() {
@@ -55,8 +56,8 @@ public class ConsoleHelper {
         System.out.println("Thanks for using my program!");
     }
 
-    private void getErrorMessage() {
-        System.out.println("You entered wrong value! Please try again!");
+    private String getErrorMessage() {
+        return "You entered wrong value! Please try again!";
     }
 
     private void getMenu() {
@@ -67,6 +68,16 @@ public class ConsoleHelper {
 
     private String writeMessageForElement() {
         return "Enter an element you want to find: ";
+    }
+
+    public static int getIntFromScanner(Scanner sc, String errorMessage)
+    {
+        while (!sc.hasNextInt())
+        {
+            System.err.println(errorMessage);
+            sc.next();
+        }
+        return sc.nextInt();
     }
 
 
