@@ -85,21 +85,18 @@ class GameLogic {
 
     private void computerSetsDecision()
             throws InterruptedException {
-        boolean success = false;
-        while (!success) {
-            int decision = (int) (Math.random() * 8.999999999999999);
+        while (true) {
+            int decision = (int) (Math.random() * 9);
             if (!(field.getMas()[decision].equals("X") || field.getMas()[decision].equals("O"))) {
                 System.out.print("Computer is thinking... ");
                 Thread.sleep(1000);
-                System.out.print("3... ");
-                Thread.sleep(1000);
-                System.out.print("2... ");
-                Thread.sleep(1000);
-                System.out.print("1... ");
-                Thread.sleep(1000);
+                for (int i = 3; i > 0; i--) {
+                    System.out.print(i + "... ");
+                    Thread.sleep(1000);
+                }
                 System.out.println();
                 field.getMas()[decision] = "O";
-                success = true;
+                break;
             }
         }
 
