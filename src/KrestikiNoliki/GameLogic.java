@@ -59,7 +59,7 @@ class GameLogic {
         } else return 0;
     }
 
-    private int setDecision(Scanner in) {
+    private int setDecision() {
         while (!in.hasNextInt()) {
             System.err.println("Incorrect input! Try again!");
             in.next();
@@ -71,7 +71,7 @@ class GameLogic {
         System.out.println("Choose where to put X: ");
         boolean success = false;
         while (!success) {
-            int decision = setDecision(in);
+            int decision = setDecision();
             if (!(decision >= 0 && decision <= 8) || !field.getMas()[decision].equals(Integer.toString(decision))) {
                 System.out.println("Incorrect input! Please try again!");
                 continue;
