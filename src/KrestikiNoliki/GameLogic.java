@@ -66,10 +66,14 @@ class GameLogic {
         } else return 0;
     }
 
-    private void setDecision(){
-        int decision = in.nextInt();
-        field.getMas()[decision] = "X";
-    }
+    private int setDecision(Scanner in){
+            while (!in.hasNextInt()) {
+                System.err.println("Incorrect input! Try again!");
+                in.next();
+            }
+            return in.nextInt();
+        }
+
     private void computerSetsDecision(){
         boolean success = false;
         while (!success) {
@@ -88,15 +92,18 @@ class GameLogic {
             field.getField();
             if (i % 2 == 0){
                 System.out.print("Choose where to put X: ");
-                setDecision();
+
+                field.getMas()[setDecision(in)] = "X";
             } else {
                 computerSetsDecision();
             }
             if (i >= 4){
                 if (checkLines() == 1){
+                    field.getField();
                     System.out.println("You won!");
                     return;
                 } else if (checkLines() == 2){
+                    field.getField();
                     System.out.println("You lost!");
                     return;
                 }
