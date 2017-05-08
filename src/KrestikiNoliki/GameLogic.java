@@ -92,8 +92,19 @@ class GameLogic {
             field.getField();
             if (i % 2 == 0){
                 System.out.print("Choose where to put X: ");
+                boolean success = false;
+                while (!success){
+                    int decision = setDecision(in);
+                    if (!(decision >= 0 && decision <= 8) || !field.getMas()[decision].equals(Integer.toString(decision))){
+                        System.out.println("Incorrect input! Please try again!");
+                        continue;
+                    }
 
-                field.getMas()[setDecision(in)] = "X";
+                    field.getMas()[decision] = "X";
+                    success = true;
+                }
+
+
             } else {
                 computerSetsDecision();
             }
