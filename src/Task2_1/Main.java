@@ -45,6 +45,7 @@ public class Main {
 
                 return null;
             }
+
         };
         int decision;
 
@@ -69,12 +70,16 @@ public class Main {
                 }
                 case 2: {
                     System.out.print("Enter an element value to remove: ");
-                    arrayList.remove(getIntFromScanner(in, "Incorrect input! Try again!"));
+                    arrayList.remove((Object)getIntFromScanner(in, "Incorrect input! Try again!"));
                     break;
                 }
                 case 3: {
                     System.out.print("Enter the index of an element to remove: ");
-                    arrayList.remove(getIntFromScanner(in, "Incorrect input! Try again!"));
+                    int index = getIntFromScanner(in, "Incorrect input! Try again!");
+                    if (index < arrayList.size() && index >= 0){
+                        arrayList.remove(index);
+                    } else System.out.println("Incorrect input! Try again!");
+
                     break;
                 }
                 case 4: {
@@ -85,8 +90,10 @@ public class Main {
                 }
                 case 5: {
                     System.out.print("Enter an element index to find: ");
-                    int element = getIntFromScanner(in, "Incorrect input! Try again!");
-                    System.out.println("In " + element + " there is " + arrayList.get(element));
+                    int index = getIntFromScanner(in, "Incorrect input! Try again!");
+                    if (index < arrayList.size() && index >= 0) {
+                        System.out.println("In " + index + " there is " + arrayList.get(index));
+                    } else System.out.println("Incorrect input! Try again!");
                     break;
                 }
                 case 6: {
@@ -140,4 +147,5 @@ public class Main {
         }
         return sc.nextInt();
     }
+
 }
