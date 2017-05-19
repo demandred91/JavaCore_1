@@ -61,11 +61,11 @@ public class Main {
             System.out.println("8) to find a direct average of elements;");
             System.out.println("9) to quit the program");
 
-            decision = getIntFromScanner(in, "Incorrect input! Try again!");
+            decision = getIntFromScanner(in, errorMessage());
             switch (decision) {
                 case 1: {
                     System.out.print("Enter an element to add: ");
-                    arrayList.add(getIntFromScanner(in, "Incorrect input! Try again!"));
+                    arrayList.add(getIntFromScanner(in, errorMessage()));
                     break;
                 }
                 case 2: {
@@ -75,25 +75,25 @@ public class Main {
                 }
                 case 3: {
                     System.out.print("Enter the index of an element to remove: ");
-                    int index = getIntFromScanner(in, "Incorrect input! Try again!");
+                    int index = getIntFromScanner(in, errorMessage());
                     if (index < arrayList.size() && index >= 0){
                         arrayList.remove(index);
-                    } else System.out.println("Incorrect input! Try again!");
+                    } else System.out.println(errorMessage());
 
                     break;
                 }
                 case 4: {
                     System.out.print("Enter an element value to find: ");
-                    int element = getIntFromScanner(in, "Incorrect input! Try again!");
+                    int element = getIntFromScanner(in, errorMessage());
                     System.out.println("This element was found in: " + arrayList.indexOf(element));
                     break;
                 }
                 case 5: {
                     System.out.print("Enter an element index to find: ");
-                    int index = getIntFromScanner(in, "Incorrect input! Try again!");
+                    int index = getIntFromScanner(in, errorMessage());
                     if (index < arrayList.size() && index >= 0) {
                         System.out.println("In " + index + " there is " + arrayList.get(index));
-                    } else System.out.println("Incorrect input! Try again!");
+                    } else System.out.println(errorMessage());
                     break;
                 }
                 case 6: {
@@ -130,7 +130,7 @@ public class Main {
                     break;
                 }
                 default: {
-                    System.out.println("Incorrect input! Try again!");
+                    System.out.println(errorMessage());
                 }
             }
 
@@ -148,4 +148,7 @@ public class Main {
         return sc.nextInt();
     }
 
+    private static String errorMessage(){
+        return "Incorrect input! Try again!";
+    }
 }
