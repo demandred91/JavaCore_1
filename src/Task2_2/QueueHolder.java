@@ -1,5 +1,6 @@
 package Task2_2;
 
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -13,8 +14,7 @@ class QueueHolder {
 
     private int queueSize = 16;
     private boolean isInitialSize = true;
-
-    private Scanner in = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
 
     int getQueueSize() {
         return queueSize;
@@ -27,8 +27,8 @@ class QueueHolder {
             System.out.println("Queue size is " + queueSize);
             isInitialSize = false;
             System.out.println("Enter new size: ");
-            queueSize = getIntFromScanner(in, errorMessage());
-            while (myQueue.size() > queueSize){
+            queueSize = getIntFromScanner();
+            while (myQueue.size() > queueSize) {
                 myQueue.remove();
             }
         }
@@ -40,24 +40,25 @@ class QueueHolder {
         if (myQueue.size() == queueSize) {
             myQueue.remove();
         }
-        myQueue.add(getIntFromScanner(in, errorMessage()));
+        myQueue.add(getIntFromScanner());
         printQueue();
     }
 
-    void printQueue(){
+    private void printQueue() {
         System.out.println(myQueue);
     }
 
-    static int getIntFromScanner(Scanner sc, String errorMessage)
-    {
-        while (!sc.hasNextInt())
-        {
-            System.err.println(errorMessage);
-            sc.next();
+    static int getIntFromScanner() {
+        int i;
+        try {
+            i = in.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Incorrect input! Please try again!");
+            in.next();
+            i = getIntFromScanner();
         }
-        return sc.nextInt();
+        return i;
     }
-    String errorMessage(){
-        return "Incorrect input! Please try again!";
-    }
+
 }
+

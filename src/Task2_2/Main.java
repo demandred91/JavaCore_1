@@ -1,6 +1,5 @@
 package Task2_2;
 
-import java.util.Scanner;
 
 /*Необходимо реализовать коллекцию, которая имеет фиксированный размер.
 
@@ -16,7 +15,8 @@ import java.util.Scanner;
 
         Результатом выполнения задания должен быть репозиторий с коллекцией, классом, тестирующим данную коллекцию, описанием задания и README файлом с инструкцией по запуску приложения*/
 public class Main {
-    private static Scanner in = new Scanner(System.in);
+
+
 
     public static void main(String[] args) {
         QueueHolder queueHolder = new QueueHolder();
@@ -27,7 +27,7 @@ public class Main {
                     "1) to change queue size;\n" +
                     "2) to add an element;\n" +
                     "3) to quit the program");
-            decision = QueueHolder.getIntFromScanner(in, queueHolder.errorMessage());
+            decision = QueueHolder.getIntFromScanner();
             switch (decision) {
                 case 1: {
                     queueHolder.changeQueueSize();
