@@ -5,6 +5,7 @@ import java.util.*;
 
 class QueueHolder {
 
+
     private Queue<Integer> myQueue = new LinkedList<Integer>() {
 
     };
@@ -24,18 +25,18 @@ class QueueHolder {
             System.out.println("Queue size is " + queueSize);
             System.out.println("Enter new size: ");
 
-            try{
+            try {
                 queueSize = getIntFromScanner();
-                if (queueSize < myQueue.size()){
+                if (queueSize < myQueue.size()) {
                     throw new QueueSizeException();
                 }
                 isInitialSize = false;
-            } catch (QueueSizeException e){
+            } catch (QueueSizeException e) {
                 System.out.println("Queue is already bigger than the size you entered!");
                 queueSize = 16;
             }
         }
-        printQueue();
+        printQueue(myQueue);
     }
 
     void addElement() {
@@ -44,12 +45,12 @@ class QueueHolder {
             myQueue.remove();
         }
         myQueue.add(getIntFromScanner());
-        printQueue();
+        printQueue(myQueue);
     }
 
-    private void printQueue() {
+    private void printQueue(Queue<Integer> queue) {
         Queue<Integer> myQueueCopy = new LinkedList<>();
-        myQueueCopy.addAll(myQueue);
+        myQueueCopy.addAll(queue);
         for (int i = 0; i < myQueue.size(); i++) {
             if (i != 0) {
                 System.out.print(", ");
