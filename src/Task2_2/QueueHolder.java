@@ -6,6 +6,10 @@ import java.util.*;
 class QueueHolder {
 
 
+    Queue<Integer> getMyQueue() {
+        return myQueue;
+    }
+
     private Queue<Integer> myQueue = new LinkedList<Integer>() {
 
     };
@@ -18,7 +22,7 @@ class QueueHolder {
         return queueSize;
     }
 
-    void changeQueueSize() {
+    void changeQueueSize(Queue<Integer> queue) {
         if (!isInitialSize) {
             System.out.println("Queue size is already not initial! It is " + queueSize);
         } else {
@@ -27,7 +31,7 @@ class QueueHolder {
 
             try {
                 queueSize = getIntFromScanner();
-                if (queueSize < myQueue.size()) {
+                if (queueSize < queue.size()) {
                     throw new QueueSizeException();
                 }
                 isInitialSize = false;
@@ -36,16 +40,16 @@ class QueueHolder {
                 queueSize = 16;
             }
         }
-        printQueue(myQueue);
+        printQueue(queue);
     }
 
-    void addElement() {
+    void addElement(Queue<Integer> queue) {
         System.out.print("Enter an element to add: ");
-        if (myQueue.size() == queueSize) {
-            myQueue.remove();
+        if (queue.size() == queueSize) {
+            queue.remove();
         }
-        myQueue.add(getIntFromScanner());
-        printQueue(myQueue);
+        queue.add(getIntFromScanner());
+        printQueue(queue);
     }
 
     private void printQueue(Queue<Integer> queue) {

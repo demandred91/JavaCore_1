@@ -30,12 +30,12 @@ public class Main {
             decision = QueueHolder.getIntFromScanner();
             switch (decision) {
                 case 1: {
-                    queueHolder.changeQueueSize();
+                    queueHolder.changeQueueSize(queueHolder.getMyQueue());
                     break;
                 }
 
                 case 2: {
-                    queueHolder.addElement();
+                    queueHolder.addElement(queueHolder.getMyQueue());
                     break;
                 }
                 case 3: {
