@@ -51,7 +51,7 @@ class QueueHolder {
     private void printQueue(Queue<Integer> queue) {
         Queue<Integer> myQueueCopy = new LinkedList<>();
         myQueueCopy.addAll(queue);
-        for (int i = 0; i < myQueue.size(); i++) {
+        for (int i = 0; i < queue.size(); i++) {
             if (i != 0) {
                 System.out.print(", ");
             }
