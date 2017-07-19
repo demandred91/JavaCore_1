@@ -40,7 +40,7 @@ public class ThreadLogic implements Runnable {
                 window = 3;
             }
         }
-        System.out.println("Client number " + client + ", please come to window " + window);
+        System.err.println("Client number " + client + ", please come to window " + window);
     }
 
 
@@ -53,6 +53,7 @@ public class ThreadLogic implements Runnable {
 
         } catch (InterruptedException | NoSuchElementException e) {
             if (isOver){
+
 
             } else if (countNoClients++ == 0) {
                 System.out.println("Workers of " + name + " decided to go and drink some coffee.");
